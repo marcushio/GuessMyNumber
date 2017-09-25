@@ -7,22 +7,19 @@
  */
 public class Controller implements ControllerInterface
 {
-    GameInterface game; 
+    Game game; 
     ViewInterface view; 
     
-    public Controller(GameInterface game){
+    public Controller(Game game){
         this.game = game;       
     }
     public void setCurrentGuess(int guess){
         game.setCurrentGuess(guess); 
     }
-    public void displayGuess(){
-        view.displayGuessResult(); 
+    public void checkGuess(){
+        game.checkGuess(); 
     }
-    public void checkGuess(int guess){
-        game.checkGuess(guess); 
-    }
-    public void displayWin(){
-        view.displayWin(); 
+    public void newGame(String playAgain){
+        game.newGame(playAgain); 
     }
 }

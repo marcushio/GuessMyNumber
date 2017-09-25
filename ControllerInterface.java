@@ -7,8 +7,7 @@
  */
 public interface ControllerInterface
 {
-    public void setCurrentGuess(int guess); 
-    public void displayGuess(); 
-    public void checkGuess(int guess); 
-    public void displayWin(); 
+    public void setCurrentGuess(int guess);  
+    public void checkGuess(); 
+    public void newGame(String playAgain); 
 }

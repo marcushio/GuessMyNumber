@@ -7,25 +7,33 @@ import java.util.Observable;
  */
 public class View implements ViewInterface
 {
-    GameInterface game; 
+    Game game; 
     ControllerInterface controller; 
     private InputGet inputGetter; 
 
     /**
      * Constructor for objects of class View
      */
-    public View(GameInterface game, ControllerInterface controller)
+    public View(Game game, ControllerInterface controller)
     {
         this.game = game; 
         this.controller = controller; 
         inputGetter = new InputGet();
-        promptUser(); 
+        
     }
-    
+    public void displayGuessResult(){
+        String result = game.getResult(); 
+        System.out.println(result); 
+        if(result == "win"){
+            displayWin(); 
+        }
+        
+    }
     /*
      * displays a message notifying the user they've guessed the number
      */
     public void displayWin(){
+        String playAgain; 
         System.out.println("**************************");
         System.out.println("**************************");
         System.out.println("***                    ***");
@@ -34,10 +42,8 @@ public class View implements ViewInterface
         System.out.println("**************************");
         System.out.println("**************************");
         System.out.println("play again? y/n");
-        String answer = inputGetter.getInput();   
-        if(answer.equals("y")){
-            game = new Game(); 
-        } 
+        playAgain = inputGetter.getInput(); 
+        controller.newGame(playAgain); 
     }
     /*
      * Prompts the user for a guess about the number
@@ -48,12 +54,9 @@ public class View implements ViewInterface
         int guess = Integer.parseInt(input); 
         controller.setCurrentGuess(guess);  
     }
-    public void displayGuessResult(){
-        
-        promptUser(); 
-    }
     public void update(Observable game, Object o){
-        this.game = (GameInterface)game; 
+        this.game = (Game) game; 
+        displayGuessResult(); 
         promptUser(); 
     }
 }

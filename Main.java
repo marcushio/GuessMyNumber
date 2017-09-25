@@ -1,4 +1,5 @@
-
+import java.util.Observer; 
+import java.util.Observable; 
 /**
  * Write a description of class Main here.
  *
@@ -8,9 +9,10 @@
 public class Main
 {   
     public static void main(String args[]){
-        GameInterface game = new Game(); 
-        ControllerInterface controller = new Controller(game); 
-        ViewInterface view = new View(game, controller); 
-        game.registerObserver(view);  
+        Observable game = new Game(); 
+        ControllerInterface controller = new Controller((Game)game); 
+        ViewInterface view = new View((Game)game, controller); 
+        game.addObserver(view);  
+        view.promptUser(); 
     }
 }
