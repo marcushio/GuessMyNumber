@@ -19,15 +19,16 @@ public class View implements ViewInterface
         this.game = game; 
         this.controller = controller; 
         inputGetter = new InputGet();
-        
     }
+    /*
+     * displays teh result of the last guess. 
+     */
     public void displayGuessResult(){
         String result = game.getResult(); 
         System.out.println(result); 
         if(result == "win"){
             displayWin(); 
         }
-        
     }
     /*
      * displays a message notifying the user they've guessed the number

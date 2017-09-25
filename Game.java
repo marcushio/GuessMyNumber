@@ -1,9 +1,8 @@
 import java.util.Random; 
 import java.util.Observable; 
-import java.util.ArrayList; 
 import java.util.Observer; 
 /**
- * Write a description of class Game here.
+ * The model in MVC. 
  *
  * @author (Marcus Trujillo)
  * @version (9.20.17)
@@ -14,9 +13,7 @@ public class Game extends Observable
     ViewInterface view; 
     
     private int guessNumber; 
-    private String guess;
     private int currentGuess; 
-    ArrayList<Observer> observers; 
     private Random randomGenerator = new Random(); 
     String result; 
     
@@ -26,15 +23,11 @@ public class Game extends Observable
     public Game()
     {
         guessNumber = randomGenerator.nextInt(1000);  
-        currentGuess = 0; 
-        //for testing print the number so you don't actually have to play
         System.out.println(guessNumber); 
-        
+        currentGuess = 0; 
         System.out.println("Guess the number between 0-1001");  
-        
     }
     public void checkGuess(){
-        
         if(currentGuess == guessNumber){
             result = "win"; 
         } else if(currentGuess < guessNumber){
@@ -44,15 +37,19 @@ public class Game extends Observable
         }
         
     }
+    /*
+     * the result of the last guess. 
+     */
     public String getResult(){
         return result; 
     } 
+    /*
+     * After one game is finished we go here to determine if we'll play another
+     */
     public void newGame(String playAgain){
         if(playAgain.equals("y")){
              guessNumber = randomGenerator.nextInt(1000); 
              result = " "; 
-             //get rid of after testing
-             System.out.println(guessNumber); 
              setChanged(); 
              notifyObservers(); 
         } else{
