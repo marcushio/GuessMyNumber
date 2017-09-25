@@ -20,11 +20,7 @@ public class InputGet
      * @return the string input by the user. 
      */
     public String getInput(){
-        System.out.print("> "); 
         guess = in.next(); 
         return guess; 
-    }
-   
-    
-    
+    }    
 }
