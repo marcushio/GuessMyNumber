@@ -2,22 +2,18 @@
 /**
  * Write a description of class Controller here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Marcus Trujillo
+ * @version 9.25.17
  */
 public class Controller implements ControllerInterface
 {
-    Game game; 
-    ViewInterface view; 
+    Game game;  
     
     public Controller(Game game){
         this.game = game;       
     }
     public void setCurrentGuess(int guess){
         game.setCurrentGuess(guess); 
-    }
-    public void checkGuess(){
-        game.checkGuess(); 
     }
     public void newGame(String playAgain){
         game.newGame(playAgain); 

@@ -4,28 +4,25 @@ import java.util.Observer;
 /**
  * The model in MVC. 
  *
- * @author (Marcus Trujillo)
- * @version (9.20.17)
+ * @author Marcus Trujillo
+ * @version 9.20.17
  */
 public class Game extends Observable
-{
-    ControllerInterface controller;
-    ViewInterface view; 
-    
+{    
     private int guessNumber; 
-    private int currentGuess; 
+    private int currentGuess = 0; 
     private Random randomGenerator = new Random(); 
     String result; 
     
     /**
-     * Constructor for objects of class Game
+     * Constructor for objects of class Game. Establishes the number to guess between 0-1000
+     * and instructs user to guess this. 
      */
     public Game()
     {
         guessNumber = randomGenerator.nextInt(1000);  
-        System.out.println(guessNumber); 
-        currentGuess = 0; 
         System.out.println("Guess the number between 0-1001");  
+        //move the above print to view
     }
     public void checkGuess(){
         if(currentGuess == guessNumber){
@@ -59,12 +56,6 @@ public class Game extends Observable
         
     }
     /*
-     * Gets what the user guessed in the form of an int.
-     */
-    public int getCurrentGuess(){
-        return currentGuess; 
-    }
-    /*
      * Sets the guess just taken as the current guess. 
      */
     public void setCurrentGuess(int guess){
@@ -72,11 +63,5 @@ public class Game extends Observable
         checkGuess(); 
         setChanged(); 
         notifyObservers(); 
-    }
-    /*
-     * Gets the number we're trying to guess. 
-     */
-    public int getGuessNumber(){
-        return guessNumber; 
     }
 }

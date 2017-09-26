@@ -56,7 +56,6 @@ public class View implements ViewInterface
         controller.setCurrentGuess(guess);  
     }
     public void update(Observable game, Object o){
-        this.game = (Game) game; 
         displayGuessResult(); 
         promptUser(); 
     }

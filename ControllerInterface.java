@@ -8,6 +8,5 @@
 public interface ControllerInterface
 {
     public void setCurrentGuess(int guess);  
-    public void checkGuess(); 
     public void newGame(String playAgain); 
 }
